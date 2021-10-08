@@ -1,0 +1,12 @@
+{
+  "name": "yes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yelp.js",
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jacob Wenger <wengerjacob.1015@gmail.com>",
+  "license": "ISC"
+}

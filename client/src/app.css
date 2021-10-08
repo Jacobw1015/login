@@ -1,0 +1,10 @@
+.App{
+    background-color:slategray;
+    width: 5vw;
+    text-align: center;
+    margin: auto;
+}
+body{
+    background-image: url("./juan.png");
+    background-size: 100px;
+}
