@@ -1,0 +1,26 @@
+div.profPic{
+  display: block;
+
+  height: 25%;
+  float: left;
+}
+
+.profPic input{
+    float: left;
+}
+img{
+  height: 200px;
+    max-width: 200px;
+    border: 3px solid darkkhaki;
+}
+.picButton{
+  text-decoration: none;
+  background-color: slategray;
+  color: white;
+  border: .5px solid darkkhaki;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.picButton:hover{
+  background-color: dimgray;
+}

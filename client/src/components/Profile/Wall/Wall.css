@@ -1,0 +1,28 @@
+.wallpost{
+    position: relative;
+    top: 1%;
+    min-width: 45px;
+    width: 250px;
+    float: left;
+    left: -12em;
+    background-color: rgba(245, 245, 245, 0.733);
+    max-width: 450px;
+    text-align: left;
+}
+
+
+.wallpost li{
+    list-style: none;
+    margin-top: 2em;
+   
+    margin-bottom: 3em;
+    border: black solid .25px;
+
+}
+.wallpost h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 0;
+}
+#post{
+    margin-left: 5px;
+}
