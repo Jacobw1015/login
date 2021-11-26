@@ -1,7 +1,6 @@
 import React from "react";
 import pic from "./juan.png"
-import pic2 from "./bender.png"
-import "./profPic.css"
+import "./profPic.css";
 
 export default class ProfilePic extends React.Component{
     constructor(props){
@@ -11,30 +10,28 @@ export default class ProfilePic extends React.Component{
           _userPic1:pic,
          
         };
-        this.changePic=this.changePic.bind(this)
+        this.changePic=this.changePic.bind(this);
+       
     }
 
 
     changePic(ev){
-    //  let pic=[pic,pic2]
-      ev.preventDefault();
-      if(this.state._userPic1 == pic){
-      this.setState({_userPic1:pic2})}
-      else{
-        this.setState({_userPic1:pic})
-      }
+
+      this.setState({
+        _userPic1: URL.createObjectURL(ev.target.files[0])
+      })
     }
 
     render(){
 
         return (
         <div className="profPic">
-         <form onSubmit={this.changePic}>
             <img  src={this.state._userPic1}/><br/>
-            <input className="picButton" type="submit" value="Change Profile Picture"/>
-            
-          </form>
-        </div>
+            <label>
+              Change your profile pic
+              <input className="picButton" type="file" onChange={this.changePic}/>
+           </label>
+           </div>
         )
     }
 }

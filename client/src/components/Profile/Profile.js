@@ -2,6 +2,7 @@ import React from "react";
 import ProfilePic from "./ProfilePic/profPic";
 import Album from "./photoAlbum/Album.js"
 import Wall from "./Wall/Wall";
+import Yelp from "../YelpSearch/Search";
 
 export default class Profile extends React.Component{
     constructor(props){
@@ -20,7 +21,8 @@ export default class Profile extends React.Component{
         <>
           <ProfilePic/>
          <Album />
-         <Wall />
+         <Wall /><br/>
+         <Yelp/>
         </>
       );
 

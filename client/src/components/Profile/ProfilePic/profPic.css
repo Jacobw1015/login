@@ -1,7 +1,7 @@
 div.profPic{
   display: block;
 
-  height: 25%;
+  height: 15%;
   float: left;
 }
 
@@ -14,13 +14,19 @@ img{
     border: 3px solid darkkhaki;
 }
 .picButton{
-  text-decoration: none;
+  
+  display: none;
+}
+.profPic label:hover{
+  background-color: dimgray;
+}
+.profPic label{
+text-decoration: none;
   background-color: slategray;
   color: white;
   border: .5px solid darkkhaki;
   cursor: pointer;
   margin-left: 5px;
-}
-.picButton:hover{
-  background-color: dimgray;
+  font-weight: 900;
+  font-size: 16px;
 }

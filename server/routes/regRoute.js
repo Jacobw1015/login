@@ -2,7 +2,9 @@ const express =require('express');
 const router = express.Router();
 const users = require('../user');
 const bcrypt = require('bcrypt')
-const yelpApiKey = '0L3RWCVGHmZPwKgiHMYi6V7eqKaPj_jZ9wFT0Ig7E-eXb8GD-oE6eYnoOW_uzE6hH4ANAY3tq8aOAyuC2nahkKkNClm_QdmFTcvvQAzwJICnLFDqRHYT6OR-zWJqYHYx';
+const { writeUser } = require('../googleSheets/accessGoogleSheets');
+const {getEmails,getNames,getPass} = require("../googleSheets/uploadUserData");
+
 router.route('/')
 .get((req,res)=>{
     res.render('register')
@@ -14,14 +16,17 @@ router.route('/')
     let currentUser = users.find(user=> user.email==regEmail);
     try{
         const hashedPassword = await bcrypt.hash(req.body.password,10);
-       if((regEmail !==""&&regName!=="")&& currentUser ==undefined){
+       if((regEmail !==""&&regName!=="")&& currentUser ==undefined &&(regEmail !==currentUser)){
            users.push({
             id: Date.now().toString(),
             name: regName,
             email:regEmail,
             password: hashedPassword
     
-        }); res.redirect('/login')
+        }); 
+        let newUser = users[users.length-1];
+       await writeUser([newUser.name,newUser.email,newUser.password])
+        res.redirect('/login')
     }else{
         res.redirect('/register')
     }
@@ -29,7 +34,7 @@ router.route('/')
     }catch{
         res.redirect('/register')
     }
-    console.log(users)
+    
     })
 
 module.exports =router;

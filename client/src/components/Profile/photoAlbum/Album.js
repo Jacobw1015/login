@@ -1,6 +1,7 @@
 import React, {Component,useRef} from "react";
 import pics from "./imageImport" ;
 
+
 export default class Album extends Component{
     constructor(props){
         super(props);
@@ -13,9 +14,9 @@ export default class Album extends Component{
         
         this.getPictures=this.getPictures.bind(this);
         this.renderPictures=this.renderPictures.bind(this);
-        this.onChange=this.onChange.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this);
         
-       
+        this.fileInput = React.createRef();
         
     }
 
@@ -41,27 +42,28 @@ export default class Album extends Component{
      
     };
 
-    onChange=(e)=>{
-    
-        
-        let url = URL.createObjectURL(e.target.files[0])
-       
-        this.setState({
-            uploadedPic: url
-        })
-
-        
-    }
    
-    
+   
+    handleSubmit(e){
+        e.preventDefault();
+     try{   let url = URL.createObjectURL(this.fileInput.current.files[0])
+        this.setState({
+            uploadedPic:url
+        });
+        this.fileInput.current.value = null;}
+        catch(err){
+            return;
+        }
+    }
 
     render(){
      
         return (
         <div className="album">
           {this.renderPictures()}
-            <form>
-              <input  type="file" onChange={this.onChange}   />
+            <form onSubmit={this.handleSubmit}>
+              <input  type="file" ref={this.fileInput} />
+              <input  type="submit"   />
             </form>
            </div>
             );

@@ -8,18 +8,26 @@ export default class Wall extends Component{
             posts: []
 
         }
-        this.addPost=this.addPost.bind(this)
+        this.addPost=this.addPost.bind(this);
+        this.renderPosts=this.renderPosts.bind(this);
     }
 
     addPost(e){
         e.preventDefault();
         function getPostValue(){
+            let rndInx=Math.floor(Math.random()*256);
+            let rndInx2=Math.floor(Math.random()*256);
+            let rndInx3=Math.floor(Math.random()*256);
+            let idNum =`${rndInx}.${rndInx2}.${rndInx3}`;
             let post = document.querySelector("#post");
-            if(post.value){
-                return post.value
-            }
-        }
-       
+               
+                return {
+                    id: `${idNum} ${post.value}`,
+                    post: post.value
+                }
+            
+      }
+            
         this.setState({
             posts: [...this.state.posts,getPostValue()]
         })
@@ -30,10 +38,33 @@ export default class Wall extends Component{
         clearField();
     }
 
+    renderPosts(obj){
+      function getPost(obj){ 
+          let arr =[];
+        for(let post in obj){
+            if(obj[post].post!==""){
+            arr.push(obj[post].post);
+            }
+        }
+        return arr;
+    }
+   let postList= getPost(obj).map((ele,index)=>{
+        return (
+           
+           <li key={index++}>{ele}</li> 
+            
+            
+            );
+
+    });
+  
+    return postList
+    }
+
     render(){
-         let post= this.state.posts.map((post,index)=>{
-           return  <li key={index++}>{post}</li>
-         });
+       
+         let posts= this.state.posts;
+   
         return (
             <div className="wallpost">
                 <h2>Wallposts:</h2>
@@ -41,7 +72,7 @@ export default class Wall extends Component{
                   <input id="post" type="text" />
                   <input type="submit"value="Post"/>
                 </form>
-              {post}
+               {this.renderPosts(posts)}
             </div>
     );
     }
