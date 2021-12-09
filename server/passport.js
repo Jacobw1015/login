@@ -1,9 +1,9 @@
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
-module.exports =function initPass(passport, getUsersemail,getUsersName){
+module.exports =async function initPass(passport, getUsersemail,getUsersName){
     const authenticate = async (email,password,done)=>{
-        let user = getUsersemail(email);
+        let user = await getUsersemail(email);
         if(user == null){
             return done(null, false, {msg:'No User was found'});
 

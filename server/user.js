@@ -1,18 +1,22 @@
+const {getData} = require("./googleSheets/accessGoogleSheets");
+const {getEmails,getNames,getPass} = require("./googleSheets/uploadUserData")
 
- let users =[
-    {
-        id:'1',
-        name:"jacob",
-        email:'wengerjacob@gmail.com',
-        password: '$2b$10$xHIW6kdNjLPxYsb8Sr9ulOKcCLfH9zk5TMkOFB3NtWxq6ctoUTbaq'
-    },
-    {   
-        id:'2',
-        name:'gilberto',
-        email: 'gilb@yahoo.com',
-        password: '$2b$10$v8plEpt54HcbNImClLGij.L2j2d8d4AGiRNu4OULVAmWLSPA/nbWm'
+let users = async function(){
+    let names = await getNames();
+    let email = await getEmails();
+    let pass = await getPass();
+     let userArr = [];
+    for(let i = 0;i<names.length;i++){
+       userArr.push({
+            id: Date.now().toString(),
+            name: names[i],
+            email: email[i],
+            password: pass[i]
+        })
     }
-];
 
- 
-module.exports = users;
+   return userArr;
+    
+};
+
+module.exports = {users};
