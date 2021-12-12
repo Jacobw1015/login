@@ -1,10 +1,7 @@
 h1{
     text-align: center;
 }
-body{
-    background-color: rgba(235, 72, 44, 0.623);
 
-}
 a.nav{
     font-size: large;
     color: #000;
@@ -18,26 +15,13 @@ a.nav:hover{
     background-color: rgba(252, 119, 96, 0.904);
     cursor: pointer;
 }
-.food{
-    margin-top: 10em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+body{
+    background-color: rgb(185, 182, 182);
 }
-.food input{
-    margin: 10px;
-}
-.food-item{
-    background-color: rgba(204, 199, 199, 0.575);
-   
-    color: cyan;
-    font-size: large;
-    font-weight: 700;
-    padding: 10px 0px;
-    width: 25%;
-}
-a:link{
-    color: cyan;
-    text-decoration: none;
+.App{
+    background-color:slategray;
+  
+    text-align: center;
+    margin: auto;
+    height: 100em;
 }

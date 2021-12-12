@@ -19,7 +19,7 @@ async function getPass(){
 }
 
 
-async function getUser(entry){
+async function getUsersName(entry){
   let regex = new RegExp(entry,"i");
   
   let found = regex.test(entry);
@@ -28,18 +28,28 @@ async function getUser(entry){
   let userRows = await getData("a2:z");
  
   
-  let userIndex =  user.find(ele=>ele===entry);
+  let userIndex =  user.find(ele=>{
+   return ele.match(regex)
+  
+  });
  
+  
+ let arr= [];
    if(userIndex !== undefined){
      for(let i = 0; i< userRows.length;i++){
      let userRow = userRows[i];
         for(let j = 0;j<userRow.length;j++){
-          if(userRow[j]===entry){
-            console.log(userRow)
+          if(userRow[j]===userIndex){
+            arr[0]={
+              id: parseInt(userRow[0]),
+              name: userRow[1],
+              email: userRow[2],
+            };
           }
         }
    }
- }
+ };
+ return arr;
 }
 
-module.exports= {getEmails,getNames,getPass,getId};
+module.exports= {getEmails,getNames,getPass,getUsersName,getId};
