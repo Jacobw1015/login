@@ -1,8 +1,6 @@
 const fetch = require('node-fetch')
 require('dotenv').config();
 
-const clientId="jfj43NIEkXjeopdf3bbCeQ";
-const apiKey = '0L3RWCVGHmZPwKgiHMYi6V7eqKaPj_jZ9wFT0Ig7E-eXb8GD-oE6eYnoOW_uzE6hH4ANAY3tq8aOAyuC2nahkKkNClm_QdmFTcvvQAzwJICnLFDqRHYT6OR-zWJqYHYx';
 
 
 
