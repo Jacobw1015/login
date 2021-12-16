@@ -30,3 +30,8 @@ text-decoration: none;
   font-weight: 900;
   font-size: 16px;
 }
+#logout{
+  position: absolute;
+  top: 10px;
+  left: 14%;
+}

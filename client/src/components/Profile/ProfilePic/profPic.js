@@ -31,6 +31,9 @@ export default class ProfilePic extends React.Component{
               Change your profile pic
               <input className="picButton" type="file" onChange={this.changePic}/>
            </label>
+           <form id="logout" action="/logout" method="GET">
+            <input type="submit" value="Log out"/>
+            </form>
            </div>
         )
     }
